@@ -1,5 +1,3 @@
-import Users from "../models/user";
-// import User from '../types/user';
 import { Request, Response } from "express";
 import Transaction from "../models/transaction";
 import { TransactionDTO } from "../dtos/trsanction.dto";
@@ -35,13 +33,11 @@ export async function calculate_balances(
       balance: transaction,
     });
     await finalBalance.save();
-    return res
-      .status(201)
-      .json({
-        message: "Transaction created successfully.",
-        finalBalance,
-        user_balance,
-      });
+    return res.status(201).json({
+      message: "Transaction created successfully.",
+      finalBalance,
+      user_balance,
+    });
   } catch (error) {
     return res.status(500).json({ error });
   }
